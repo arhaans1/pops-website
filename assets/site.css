@@ -1340,6 +1340,20 @@ main {
   padding: 32px;
 }
 
+.contact-card.contact-form-embed {
+  min-height: 656px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-slate);
+}
+
+.contact-form-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: 656px;
+  border: 0;
+}
+
 .link-list li {
   margin: 14px 0;
 }

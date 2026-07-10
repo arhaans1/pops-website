@@ -61,6 +61,7 @@ const pages = {
     description:
       "Get in touch with the Platform of Papas team - programme enquiries, partnerships, and community access.",
     body: contactPage(),
+    scripts: '<script src="https://link.msgsndr.com/js/form_embed.js"></script>',
   },
   privacy: {
     out: "privacy/index.html",
@@ -158,7 +159,7 @@ function renderPage(page) {
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="${depth}assets/site.css?v=20260710i">
+  <link rel="stylesheet" href="${depth}assets/site.css?v=20260710j">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -167,7 +168,7 @@ function renderPage(page) {
 ${page.body}
   </main>
   ${footer()}
-  <script src="${depth}assets/site.js?v=20260710b"></script>
+${page.scripts ? `  ${page.scripts}\n` : ""}  <script src="${depth}assets/site.js?v=20260710b"></script>
 </body>
 </html>
 `;
@@ -785,16 +786,25 @@ function contactPage() {
   ${section({
     title: "Send us a message",
     content: `<div class="contact-grid">
-      <form class="full-form contact-card reveal" data-form data-success="Thank you - Vishal's team will be in touch within 48 hours.">
-        <div class="form-row">
-          <label class="form-group"><span>Full Name</span><input name="name" autocomplete="name" required></label>
-          <label class="form-group"><span>Email Address</span><input name="email" type="email" autocomplete="email" required></label>
-        </div>
-        <label class="form-group"><span>Reason for reaching out</span><select name="reason"><option>Program Enquiry</option><option>1-1 Consultation</option><option>Community</option><option>Partnership</option><option>Something Else</option></select></label>
-        <label class="form-group"><span>Message</span><textarea name="message" required></textarea></label>
-        <button class="btn-primary" type="submit">Send Message</button>
-        <p class="form-status" data-form-status aria-live="polite"></p>
-      </form>
+      <div class="contact-card contact-form-embed reveal">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/nYTRe4T55k9IP7KeZ03W"
+          style="width:100%;height:100%;border:none;border-radius:8px"
+          id="inline-nYTRe4T55k9IP7KeZ03W"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Contact Us Page"
+          data-height="656"
+          data-layout-iframe-id="inline-nYTRe4T55k9IP7KeZ03W"
+          data-form-id="nYTRe4T55k9IP7KeZ03W"
+          title="Contact Us Page"
+        ></iframe>
+      </div>
       <aside class="contact-card reveal">
         <span class="eyebrow">Reach us directly</span>
         <h3>Prefer to reach out directly?</h3>
