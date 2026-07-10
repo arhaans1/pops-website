@@ -1,0 +1,18 @@
+.DS_Store
+.claude/
+node_modules/
+
+# Working documents and superseded landing-page drafts
+*.docx
+*.pdf
+21dc_landing_page.html
+(OLD) platform_of_papas_lp (1).html
+GHL_IMAGE_URL_REPLACEMENT_GUIDE.md
+Vishal_Messaging_Blueprint.md
+
+# Publish only image assets used by the website
+Images/*
+!Images/pops-logo-cropped.png
+!Images/pops-hero-family-generated.png
+!Images/DSC_6630.jpg
+!Images/DSC_6646.jpg
