@@ -2,9 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 const root = process.cwd();
-const WEBINAR_URL = "https://lp.platformofpapas.com/webinar-lp";
+const WEBINAR_URL = "https://lp.platformofpapas.com/webinar-registration-lp-page";
 const TRANSFORMATION_URL = "https://lp.platformofpapas.com/fatherhood-transformation-program";
-const CHALLENGE_URL = "https://lp.platformofpapas.com/21-day-connected-father-challenge";
 const LEGAL_EFFECTIVE_DATE = "10 July 2026";
 
 const pages = {
@@ -12,18 +11,18 @@ const pages = {
     out: "index.html",
     route: "/",
     nav: "home",
-    title: "Platform of Papas - Connected Father, Confident at Work",
+    title: "Platform of Papas - Self-Leadership for Fathers",
     description:
-      "Vishal Kumar Singh helps ambitious fathers build deep connection at home - without falling behind at work. Programs, community, and resources.",
+      "Self-leadership for fathers who want clearer decisions, emotional strength, authentic confidence, powerful presence, and meaningful direction.",
     body: homePage(),
   },
   about: {
     out: "about/index.html",
     route: "/about/",
     nav: "about",
-    title: "About Vishal Kumar Singh - Fatherhood Connection Architect",
+    title: "About Vishal Kumar Singh - Platform of Papas",
     description:
-      "The story of how Vishal went from career-first to present father - and built a system other fathers can follow.",
+      "Vishal Kumar Singh's journey from externally driven success to self-awareness, authentic confidence, and intentional living.",
     body: aboutPage(),
   },
   approach: {
@@ -32,25 +31,25 @@ const pages = {
     nav: "learn",
     title: "The Approach - Platform of Papas",
     description:
-      "The F.U.T.U.R.E Framework and inside-out method behind every Platform of Papas programme.",
+      "Learn the practical self-leadership skills that help fathers think clearly, regulate emotions, trust decisions, and live intentionally.",
     body: approachPage(),
   },
   stories: {
     out: "stories/index.html",
     route: "/stories/",
     nav: "learn",
-    title: "Stories & Results - Platform of Papas",
+    title: "Stories & Results - Self-Leadership for Fathers",
     description:
-      "Real shifts from real fathers. 100+ men who did the inner work and changed how their families experience them.",
+      "Real reflections from fathers developing greater self-awareness, clarity, confidence, presence, and personal direction.",
     body: storiesPage(),
   },
   newsletter: {
     out: "newsletter/index.html",
     route: "/newsletter/",
     nav: "learn",
-    title: "The Papas Letter - Weekly Insight for Ambitious Fathers",
+    title: "The Papas Letter - Weekly Self-Leadership for Fathers",
     description:
-      "One honest insight, every week. For the father who wants to be more - at home and at work. Free.",
+      "One grounded self-leadership insight every Sunday for fathers building clarity, confidence, presence, and purpose.",
     body: newsletterPage(),
   },
   contact: {
@@ -59,7 +58,7 @@ const pages = {
     nav: "about",
     title: "Contact - Platform of Papas",
     description:
-      "Get in touch with the Platform of Papas team - programme enquiries, partnerships, and community access.",
+      "Contact Platform of Papas about self-leadership programmes, the webinar, partnerships, and other enquiries.",
     body: contactPage(),
     scripts: '<script src="https://link.msgsndr.com/js/form_embed.js"></script>',
   },
@@ -95,41 +94,68 @@ const pages = {
     route: "/challenge/",
     nav: "programs",
     title: "21 Day Connected Father Challenge - Platform of Papas",
-    description: "The 21 Day Connected Father Challenge from Platform of Papas.",
-    body: offerShell("21 Day Connected Father Challenge"),
+    description: "The 21 Day Connected Father Challenge is not currently open for enrolment.",
+    noindex: true,
+    body: offerShell({
+      eyebrow: "Enrollment currently closed",
+      title: "21 Day Connected Father Challenge",
+      copy: "This programme is not currently open. Explore the live webinar, recorded course, or free eBook to begin your self-leadership journey.",
+    }),
   },
   catalyst: {
     out: "catalyst/index.html",
     route: "/catalyst/",
     nav: "programs",
-    title: "Fatherhood Transformation Program - Platform of Papas",
-    description: "The Fatherhood Transformation Program from Platform of Papas.",
-    body: offerShell("Fatherhood Transformation Program"),
+    title: "Fatherhood Transformation Program - Self-Leadership for Fathers",
+    description: "A recorded, self-paced programme for fathers building clarity, emotional strength, confidence, presence, and direction.",
+    body: offerShell({
+      eyebrow: "Recorded course",
+      title: "Fatherhood Transformation Program",
+      copy: "Develop the practical skills to lead your inner world, trust your decisions, communicate consciously, and create a more authentic and intentional life.",
+      cta: "Explore the Recorded Course",
+      href: TRANSFORMATION_URL,
+    }),
   },
   webinar: {
     out: "webinar/index.html",
     route: "/webinar/",
     nav: "programs",
-    title: "Conscious Fatherhood Webinar - Platform of Papas",
-    description: "Client-supplied webinar content for Platform of Papas.",
-    body: offerShell("Conscious Fatherhood Webinar"),
+    title: "Conscious Fatherhood Webinar - Self-Leadership for Fathers",
+    description: "A live introduction to self-leadership for fathers who want greater clarity, confidence, presence, and purpose.",
+    body: offerShell({
+      eyebrow: "Live every Saturday",
+      title: "Conscious Fatherhood Webinar",
+      copy: "Discover why responsibility alone does not create self-leadership - and learn how to meet pressure with greater awareness, clarity, and choice.",
+      cta: "Join the Webinar",
+      href: WEBINAR_URL,
+    }),
   },
   ebook: {
     out: "ebook/index.html",
     route: "/ebook/",
     nav: "programs",
-    title: "Free eBook - Platform of Papas",
-    description: "Client-supplied eBook content for Platform of Papas.",
-    body: offerShell("Free eBook"),
+    title: "Free Self-Leadership eBook for Fathers - Platform of Papas",
+    description: "A practical introduction to self-leadership for fathers who want to live with greater clarity, confidence, presence, and intention.",
+    body: offerShell({
+      eyebrow: "Free resource",
+      title: "Begin with self-leadership",
+      copy: "The free eBook introduces the inner skills that help you understand your patterns, choose your response, and create a life that reflects who you truly are.",
+    }),
   },
   consultation: {
     out: "consultation/index.html",
     route: "/consultation/",
     nav: "",
     title: "1-1 Consultation - Platform of Papas",
-    description: "Hidden consultation page for Platform of Papas.",
+    description: "A private self-leadership consultation with Platform of Papas.",
     noindex: true,
-    body: offerShell("1-1 Consultation"),
+    body: offerShell({
+      eyebrow: "Private session",
+      title: "1-1 Consultation",
+      copy: "A focused conversation about the patterns, pressure, decisions, and direction shaping your life right now.",
+      cta: "Contact Us",
+      href: "/contact/",
+    }),
   },
 };
 
@@ -159,7 +185,7 @@ function renderPage(page) {
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="${depth}assets/site.css?v=20260710j">
+  <link rel="stylesheet" href="${depth}assets/site.css?v=20260803a">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -173,7 +199,18 @@ ${page.scripts ? `  ${page.scripts}\n` : ""}  <script src="${depth}assets/site.j
 </html>
 `;
 
-  return localizeInternalUrls(html, depth || "./");
+  return localizeInternalUrls(openOfferLinksInNewTab(html), depth || "./");
+}
+
+function openOfferLinksInNewTab(html) {
+  return [WEBINAR_URL, TRANSFORMATION_URL].reduce(
+    (output, url) =>
+      output.replaceAll(
+        `href="${url}"`,
+        `href="${url}" target="_blank" rel="noopener noreferrer"`
+      ),
+    html
+  );
 }
 
 function localizeInternalUrls(html, rootPrefix) {
@@ -193,7 +230,7 @@ function nav(active, ctaText, ctaHref) {
   <div class="container nav-inner">
     <a class="brand" href="/" aria-label="Platform of Papas home">
       <span class="brand-mark-wrap" aria-hidden="true"><img class="brand-mark" src="/Images/pops-logo-cropped.png" alt=""></span>
-      <span class="brand-copy"><span class="brand-text">Platform of Papas</span><span class="brand-tagline">Connected father. Confident at work.</span></span>
+      <span class="brand-copy"><span class="brand-text">Platform of Papas</span><span class="brand-tagline">Self-leadership for fathers.</span></span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a class="nav-link ${active === "home" ? "is-active" : ""}" href="/">Home</a>
@@ -203,7 +240,6 @@ function nav(active, ctaText, ctaHref) {
         active === "programs",
         [
           { label: "Paid Programmes", type: "label" },
-          { label: "21 Day Connected Father Challenge", href: CHALLENGE_URL },
           { label: "Fatherhood Transformation Program", href: TRANSFORMATION_URL },
           { label: "Conscious Fatherhood Webinar", href: WEBINAR_URL },
           { label: "Free Resource", type: "label" },
@@ -241,9 +277,8 @@ function nav(active, ctaText, ctaHref) {
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
     <a class="${active === "home" ? "is-active" : ""}" href="/">Home</a>
     <div class="mobile-label">Programmes</div>
-    <a href="${CHALLENGE_URL}">21 Day Connected Father Challenge</a>
-    <a href="${TRANSFORMATION_URL}">Fatherhood Transformation</a>
-    <a href="${WEBINAR_URL}">Paid Webinar</a>
+    <a href="${TRANSFORMATION_URL}">Fatherhood Transformation Program</a>
+    <a href="${WEBINAR_URL}">Conscious Fatherhood Webinar</a>
     <a href="/ebook/">Free eBook</a>
     <div class="mobile-label">Learn</div>
     <a href="/approach/">The Approach</a>
@@ -278,7 +313,7 @@ function footer() {
     <div class="footer-top">
       <div class="footer-brand">
         <h2>PLATFORM OF PAPAS</h2>
-        <p>Connected Father, Confident at Work.</p>
+        <p>Self-leadership for fathers. Awaken the leader in you.</p>
         <div class="socials" aria-label="Social links">
           <a href="https://www.instagram.com/platformofpapas" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668 24 15.259 24 12s-.014-3.667-.072-4.947C23.732 2.699 21.311.272 16.949.072 15.668.014 15.259 0 12 0zm0 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
@@ -296,9 +331,8 @@ function footer() {
     <div class="footer-links">
       <div>
         <h3>Programs</h3>
-        <a href="${CHALLENGE_URL}">21 Day Connected Father Challenge</a>
-        <a href="${TRANSFORMATION_URL}">Fatherhood Transformation</a>
-        <a href="${WEBINAR_URL}">Paid Webinar</a>
+        <a href="${TRANSFORMATION_URL}">Recorded Course</a>
+        <a href="${WEBINAR_URL}">Live Webinar</a>
         <a href="/ebook/">Free eBook</a>
       </div>
       <div>
@@ -332,17 +366,9 @@ function hero({ eyebrow, title, copy, image, imageAlt = "", center = false, wide
   return `<section class="hero ${center ? "center" : ""} ${hasImage ? "with-image" : ""}">
   <div class="container ${hasImage ? "hero-grid" : ""}">
     <div class="hero-copy reveal">
-      ${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ""}
-      <h1>${title}</h1>
-      ${copy ? `<p>${copy}</p>` : ""}
-      ${actions ? `<div class="hero-actions">${actions}</div>` : ""}
-    </div>
-    ${
-      hasImage
-        ? `<div class="hero-media ${wide ? "wide" : ""} reveal"><img src="${image}" alt="${imageAlt}"></div>`
-        : ""
-    }
-  </div>
+${eyebrow ? `      <span class="eyebrow">${eyebrow}</span>\n` : ""}      <h1>${title}</h1>
+${copy ? `      <p>${copy}</p>\n` : ""}${actions ? `      <div class="hero-actions">${actions}</div>\n` : ""}    </div>
+${hasImage ? `    <div class="hero-media ${wide ? "wide" : ""} reveal"><img src="${image}" alt="${imageAlt}"></div>\n` : ""}  </div>
 </section>`;
 }
 
@@ -353,11 +379,7 @@ function button(label, href, kind = "primary") {
 function section({ cls = "", eyebrow = "", title = "", intro = "", content = "", center = false }) {
   return `<section class="section ${cls} ${center ? "center" : ""}">
   <div class="container">
-    ${eyebrow ? `<span class="eyebrow reveal">${eyebrow}</span>` : ""}
-    ${title ? `<h2 class="reveal">${title}</h2>` : ""}
-    ${intro ? `<p class="lead prose reveal">${intro}</p>` : ""}
-    ${content}
-  </div>
+${eyebrow ? `    <span class="eyebrow reveal">${eyebrow}</span>\n` : ""}${title ? `    <h2 class="reveal">${title}</h2>\n` : ""}${intro ? `    <p class="lead prose reveal">${intro}</p>\n` : ""}${content ? `    ${content}\n` : ""}  </div>
 </section>`;
 }
 
@@ -376,10 +398,9 @@ function proofBar(items) {
 
 function programCards() {
   const cards = [
-    ["LIVE - 5AM", "21 Day Connected Father Challenge", "21 mornings. One life lesson a day. Live at 5AM with Vishal. The fastest way to shift how your family experiences you.", "&#8377;2100 one-time", "Join the Challenge", CHALLENGE_URL],
-    ["SELF-PACED", "Fatherhood Transformation Program", "Go deeper at your own pace through the full system that builds a connected father from the inside out.", "Recorded course", "Explore the Course", TRANSFORMATION_URL],
-    ["LIVE SESSION", "Paid Webinar - Conscious Fatherhood", "A 90-minute live session with Vishal. The right starting point if you are not sure yet.", "One evening", "Join the Webinar", WEBINAR_URL],
-    ["FREE", "Free eBook", "Not sure where to start? Download the free guide and take the first step - no commitment needed.", "Free", "Get the Free eBook", "/ebook/"],
+    ["LIVE EVERY SATURDAY", "Conscious Fatherhood Webinar", "A live introduction to self-leadership for fathers. Understand the inner skills that help you meet pressure with clarity, awareness, and choice.", "Live session", "Join the Webinar", WEBINAR_URL],
+    ["RECORDED COURSE", "Fatherhood Transformation Program", "Build self-awareness, emotional regulation, authentic confidence, conscious communication, and meaningful direction at your own pace.", "Self-paced", "Explore the Course", TRANSFORMATION_URL],
+    ["FREE RESOURCE", "Free eBook", "A practical first step for the father who wants to understand his patterns, trust himself more deeply, and live with greater intention.", "Free", "Get the Free eBook", "/ebook/"],
   ];
   return `<div class="program-grid">${cards
     .map(
@@ -398,7 +419,7 @@ function testimonialsGrid(two = false) {
   const items = [
     ["Harsh Gurung", "These questions made me more mindful and self-aware. I now see my patterns clearly - especially where I was depending on external validation. Now I have clarity and direction."],
     ["Manoj Thakur", "I feel more in control now. Not because things changed outside - but because I have more clarity within."],
-    ["Challenge Participant, Cohort 2", "I am more determined and focused. I have created positive references in my mind. Now nothing feels impossible."],
+    ["Platform of Papas Participant", "I am more determined and focused. I have created positive references in my mind. Now nothing feels impossible."],
   ];
   return `<div class="testimonial-grid ${two ? "two" : ""}">${items
     .map((item) => testimonial(item[0], item[1]))
@@ -419,7 +440,7 @@ function newsletterStrip() {
   return `<section class="newsletter-strip">
   <div class="container">
     <h2 class="reveal">The Papas Letter</h2>
-    <p class="reveal">Every week, one insight for the father who wants to show up fully - at home and at work. No noise. No pressure.</p>
+    <p class="reveal">One grounded insight on clarity, confidence, presence, and intentional living every Sunday.</p>
     <button class="btn-primary newsletter-modal-cta reveal" type="button" data-modal-open aria-haspopup="dialog" aria-controls="ghlModal">Join The Papas Letter</button>
     <p class="newsletter-privacy reveal">No spam. No sales. Unsubscribe anytime.</p>
   </div>
@@ -428,60 +449,61 @@ function newsletterStrip() {
 
 function homePage() {
   return `${hero({
-    title: "You're doing everything right. So why does home still feel like you're not enough?",
+    eyebrow: "Self-leadership for fathers",
+    title: "Awaken the leader in you.",
     copy:
-      "Platform of Papas helps ambitious fathers build deep connection at home - without falling behind at work.",
+      "Learn to lead yourself - so you can take back control of your inner world, step into your power, and become the man you know you are capable of becoming.",
     image: "/Images/pops-hero-family-generated.png",
-    imageAlt: "A father being welcomed home by his child",
+    imageAlt: "A father sharing a present moment with his child",
     wide: true,
     actions: `${button("Join the Webinar", WEBINAR_URL)} ${button("Explore the Programs", "#programs", "secondary")}`,
   })}
   ${proofBar([
-    [100, "+", "Fathers Transformed"],
-    [4, "", "Years of Lived Work"],
-    [3, "", "Programs Built for Real Life"],
-    [5, "AM", "Daily - Before the World Takes Over"],
+    [100, "+", "Fathers supported"],
+    [9, "", "Practical self-leadership skills"],
+    [3, "", "Ways to begin"],
+    [1, "", "Life - consciously led"],
   ])}
   ${section({
-    title: "Fathers don't lack love. They lack a system.",
+    title: "You can be responsible and still live reactively.",
     content: `<div class="two-col">
       <div class="prose reveal">
-        <p>Modern fathers are asked to do three things at once: perform at work, provide for the family, and be emotionally present at home. But no one ever gives you a system that integrates all three.</p>
-        <p>So you default to what you were taught - provide first, connect later. And "later" never comes.</p>
+        <p>You meet your obligations. You keep moving. You handle what needs to be handled. Yet your mind may never completely switch off, important decisions become exhausting, and the rhythm of your life is shaped by urgency rather than intention.</p>
+        <p>External capability does not automatically create internal direction. Responsibility alone does not teach you how to regulate pressure, trust yourself, or choose the life you genuinely want.</p>
       </div>
       <div class="prose reveal">
         <ul class="truth-list">
-          <li><span class="list-icon">&bull;</span><span>Physically present in the room. Mentally still in the meeting.</span></li>
-          <li><span class="list-icon">&bull;</span><span>Working hard to give your family everything - except the one thing they need most.</span></li>
-          <li><span class="list-icon">&bull;</span><span>You try. It does not stick. You feel guilty. You try again.</span></li>
+          <li><span class="list-icon">&bull;</span><span>Your mind keeps replaying conversations and possible outcomes.</span></li>
+          <li><span class="list-icon">&bull;</span><span>You wait for certainty before making decisions that matter.</span></li>
+          <li><span class="list-icon">&bull;</span><span>Pressure appears as irritation, withdrawal, overthinking, or emotional shutdown.</span></li>
+          <li><span class="list-icon">&bull;</span><span>You are active throughout the day, but not always present in your own life.</span></li>
         </ul>
       </div>
     </div>
-    <blockquote class="pullquote reveal">Fathers do not lack love. They lack a consistent way to express it. They default into disconnection - not because they do not care, but because no one ever taught them how.</blockquote>
-    <h3 class="reveal">That changes here.</h3>`,
+    <blockquote class="pullquote reveal">A more powerful life begins when a man learns to lead himself.</blockquote>`,
   })}
   ${section({
     cls: "tint",
-    title: "This is not a parenting program.",
+    title: "Not parenting advice. Self-leadership.",
     intro:
-      "Platform of Papas works on the man behind the father - your identity, your patterns, your inner clarity.",
+      "Platform of Papas is a practical self-leadership system created specifically for men who are also fathers.",
     content: `<div class="two-col">
       <div class="contrast-card reveal">
         <h3>NOT this</h3>
         <ul class="check-list">
-          <li><span class="list-icon no">x</span><span>Parenting techniques or tactical tips</span></li>
-          <li><span class="list-icon no">x</span><span>Motivational content that fades by Monday</span></li>
-          <li><span class="list-icon no">x</span><span>Adding more to your already-full plate</span></li>
-          <li><span class="list-icon no">x</span><span>Telling you to work less or slow down</span></li>
+          <li><span class="list-icon no">x</span><span>Parenting tips or marriage counselling</span></li>
+          <li><span class="list-icon no">x</span><span>Motivation, productivity coaching, or corporate leadership training</span></li>
+          <li><span class="list-icon no">x</span><span>A louder, harder, or more dominant personality</span></li>
+          <li><span class="list-icon no">x</span><span>Control over your spouse, children, or anyone around you</span></li>
         </ul>
       </div>
       <div class="contrast-card reveal">
-        <h3>YES this</h3>
+        <h3>THIS work</h3>
         <ul class="check-list">
-          <li><span class="list-icon">&#10003;</span><span>Systems thinking for the man behind the father</span></li>
-          <li><span class="list-icon">&#10003;</span><span>Inner clarity that changes how your family experiences you</span></li>
-          <li><span class="list-icon">&#10003;</span><span>Simple, repeatable habits - less than 10 minutes a day</span></li>
-          <li><span class="list-icon">&#10003;</span><span>Connection and ambition as forces that reinforce each other</span></li>
+          <li><span class="list-icon">&#10003;</span><span>Self-awareness and emotional regulation under pressure</span></li>
+          <li><span class="list-icon">&#10003;</span><span>Clear decisions built on values and self-trust</span></li>
+          <li><span class="list-icon">&#10003;</span><span>Conscious communication, boundaries, and courageous action</span></li>
+          <li><span class="list-icon">&#10003;</span><span>Authenticity, purpose, and a life created intentionally</span></li>
         </ul>
       </div>
     </div>`,
@@ -489,7 +511,7 @@ function homePage() {
   ${section({
     cls: "",
     eyebrow: "Find your starting point",
-    title: "Every father is at a different stage. Start where you are.",
+    title: "Start where you are. Build the capacity to go further.",
     content: `<div id="programs">${programCards()}</div>`,
   })}
   ${section({
@@ -497,11 +519,11 @@ function homePage() {
     content: `<div class="about-teaser">
       <div class="image-panel reveal"><img src="/Images/DSC_6630.jpg" alt="Vishal Kumar Singh, founder of Platform of Papas"></div>
       <div class="reveal">
-        <span class="eyebrow">Who is Vishal</span>
+        <span class="eyebrow">Founder, Platform of Papas</span>
         <h2>Vishal Kumar Singh</h2>
-        <p class="lead">Fatherhood Connection Architect &middot; Platform of Papas</p>
-        <p>Vishal is not a parenting coach. He is a high-performing professional who nearly lost himself to his career - and rebuilt his identity from the inside out. He has since helped 100+ ambitious fathers build deep connection at home, without compromising what they have built at work.</p>
-        <p>Not theory. Lived experience. Systems that actually hold.</p>
+        <p class="lead">Self-leadership for fathers</p>
+        <p>Vishal built Platform of Papas from lived experience. When the external structures he had relied on disappeared, he was forced to ask who he was without the titles, targets, and approval that had shaped his identity.</p>
+        <p>His work now helps fathers develop the inner skills to meet pressure, trust themselves, and create a life that feels genuinely their own.</p>
         <a class="text-link" href="/about/">Read Vishal's Story &rarr;</a>
       </div>
     </div>`,
@@ -509,136 +531,141 @@ function homePage() {
   ${section({
     cls: "off",
     eyebrow: "What fathers say",
-    title: "Real shifts from men doing the work.",
+    title: "What changes when a father learns to lead himself.",
     content: `${testimonialsGrid()}<p class="reveal" style="margin-top:28px"><a class="text-link" href="/stories/">Read more stories &rarr;</a></p>`,
   })}
   ${newsletterStrip()}
   ${section({
     center: true,
-    content: `<blockquote class="pullquote centered reveal">"I help fathers become the kind of man their family feels deeply connected to. Every day."<br><cite class="testimonial-name">Vishal Kumar Singh</cite></blockquote>`,
+    content: `<blockquote class="pullquote centered reveal">Awaken the leader in you.<br>Better within yourself. More present with others. More intentional with your life.<br><cite class="testimonial-name">Platform of Papas</cite></blockquote>`,
   })}
   ${newsletterModal()}`;
 }
 
 function aboutPage() {
   return `${hero({
-    eyebrow: "Vishal Kumar Singh &middot; Fatherhood Connection Architect",
-    title: "I didn't become a better father by trying harder. I became one by going inward.",
+    eyebrow: "Vishal Kumar Singh &middot; Founder, Platform of Papas",
+    title: "Not a new you. The real you, fully expressed.",
+    copy: "Platform of Papas began with a personal question: who are you when the titles, targets, and external approval no longer tell you who to be?",
     image: "/Images/DSC_6646.jpg",
     imageAlt: "Portrait of Vishal Kumar Singh",
   })}
   ${section({
-    title: "The version of success no one questions",
+    title: "The life that looked right from the outside",
     content: `<div class="prose reveal">
-      <p>Like most men, Vishal grew up with a clear map. Study hard. Build a career. Provide for your family. Keep performing. He followed it completely. He invested everything into his professional life - his time, his energy, his identity.</p>
-      <p>From the outside, it looked like success. From the inside, he was running.</p>
+      <p>Vishal grew up with a familiar map: study hard, build a career, fulfil your responsibilities, and keep performing. He followed it completely. Work became more than something he did; it became the structure around his identity.</p>
+      <p>He was capable, committed, and moving forward. But capability on the outside did not automatically create clarity on the inside.</p>
     </div>`,
   })}
   ${section({
     cls: "tint",
-    title: "The moment everything stripped away",
+    title: "When the external structure disappeared",
     content: `<div class="prose reveal">
-      <p>Three months into his marriage, a professional crisis changed everything. The titles disappeared. The targets evaporated. The external structure he had built his identity on - gone.</p>
+      <p>Three months into his marriage, a professional crisis changed everything. The titles disappeared. The targets evaporated. The structure he had relied on to understand himself was suddenly gone.</p>
       <blockquote class="pullquote">"Who are you when all of that is gone?"</blockquote>
-      <p>He did not have an answer. That absence - more than the crisis itself - sent him inward.</p>
+      <p>He did not have an easy answer. That absence - more than the crisis itself - sent him inward.</p>
     </div>`,
   })}
   ${section({
-    title: "The turn inward",
+    title: "The work began within",
     content: `<div class="prose reveal">
-      <p>Vishal did not sign up for parenting classes. He did not read books on how to be a better father. He worked on himself - his patterns, his identity, the conditioning he had carried since childhood.</p>
-      <p>As his inner world began to clear, something unexpected happened. His outer world changed. His relationships shifted. The emotional distance at home began to close. Not because he tried harder as a father. Because a different man was showing up.</p>
-      <p>Connection is not a personality trait. It is learnable. It is designable. And it begins - always - within.</p>
+      <p>Vishal began examining the patterns, expectations, emotional habits, and need for approval that had quietly shaped his decisions. He learned to notice what was happening within him before it controlled how he behaved.</p>
+      <p>As he developed greater self-awareness, emotional steadiness, and clarity, the change became visible everywhere: in his decisions, his confidence, his communication, his work, and the way he participated in family life.</p>
+      <p>The lesson was simple and powerful: when a father changes how he shows up, the quality of every relationship around him can begin to change.</p>
     </div>`,
   })}
   ${section({
     cls: "dark",
-    title: "He is not a parenting coach.",
+    title: "Why Platform of Papas exists",
     content: `<div class="two-col">
       <div class="reveal">
-        <h3>What he is not</h3>
-        <p>He is not a motivational speaker. He is not here to give fathers tips that sound good and disappear by Monday.</p>
+        <h3>What Vishal discovered</h3>
+        <p>A man can be responsible and still live reactively. He can appear confident and still make decisions from fear. He can care deeply for his family and still struggle to remain present. None of this means he is broken. It means he may never have been taught the skills to lead himself.</p>
       </div>
       <div class="reveal">
-        <h3>What he helps fathers do</h3>
+        <h3>What the work develops</h3>
         <ul class="check-list">
-          <li><span class="list-icon">1</span><span>Move from providing to truly being there</span></li>
-          <li><span class="list-icon">2</span><span>Build simple, repeatable systems for connection</span></li>
-          <li><span class="list-icon">3</span><span>Show up consistently - not just occasionally</span></li>
+          <li><span class="list-icon">1</span><span>Clarity and self-trust in meaningful decisions</span></li>
+          <li><span class="list-icon">2</span><span>Emotional strength without suppression</span></li>
+          <li><span class="list-icon">3</span><span>Authentic confidence, presence, and purpose</span></li>
         </ul>
       </div>
     </div>
-    <blockquote class="pullquote centered reveal">"I help fathers become the kind of man their family feels deeply connected to. Every day."</blockquote>`,
+    <blockquote class="pullquote centered reveal">There is a more powerful version of you already within you. Self-leadership is how you bring him fully into your life.</blockquote>`,
   })}
   ${proofBar([
-    [100, "+", "Fathers transformed across cohorts"],
-    [4, "", "Years of lived research"],
-    [3, "", "Structured programs"],
-    [2, "", "Tier 1 & 2 India focus"],
+    [100, "+", "Fathers supported"],
+    [9, "", "Practical inner skills"],
+    [3, "", "Ways to begin"],
+    [1, "", "Focus - lead yourself"],
   ])}
   ${section({
     cls: "orange center",
-    title: "Ready to start?",
-    intro: "If this resonated, the work is waiting. Choose the program that fits where you are right now.",
+    title: "Awaken the leader in you.",
+    intro: "The goal is not to escape pressure. It is to become the man who can meet it with clarity, awareness, and choice.",
     content: `<div class="section-actions">${button("Join the Webinar", WEBINAR_URL)} ${button("Explore All Programs", "/#programs", "secondary")}</div>`,
   })}`;
 }
 
 function approachPage() {
-  const framework = [
-    ["F", "First Me", "Self-regulation before connection. You cannot give what you do not have."],
-    ["U", "U-Turn", "Removing the distractions - external and internal - that pull you away from presence."],
-    ["T", "Transition", "The bridge between work-mode and father-mode. A deliberate, repeatable shift."],
-    ["U", "Unison", "Family alignment. Connection is not a solo act."],
-    ["R", "Roadmap", "Structured planning for consistency. Not intensity. Consistency."],
-    ["E", "Endless Legacy", "The long view. What do you want your children to say about their father twenty years from now?"],
+  const skills = [
+    ["01", "Self-awareness", "Notice your thoughts, emotions, triggers, needs, beliefs, and patterns before they unconsciously determine your behaviour."],
+    ["02", "Emotional regulation", "Experience emotion without suppressing it, exploding, withdrawing, or allowing it to control the next decision."],
+    ["03", "Decision-making", "Choose with clarity, self-trust, and alignment instead of fear, approval-seeking, or endless analysis."],
+    ["04", "Boundary setting", "Protect your time, attention, energy, values, and self-respect without unnecessary guilt or aggression."],
+    ["05", "Conscious communication", "Express thoughts, emotions, needs, and expectations clearly, calmly, and respectfully."],
+    ["06", "Courage", "Take honest, aligned action even when discomfort, fear, or uncertainty is present."],
+    ["07", "Intentional living", "Consciously choose what deserves your time, energy, and attention instead of living only by urgency."],
+    ["08", "Authenticity", "Operate from your real self rather than maintaining an image designed to gain approval or appear strong."],
+    ["09", "Purpose and calling", "Understand what feels deeply meaningful and translate it into personal direction and action."],
   ];
   return `${hero({
     center: true,
-    title: "Connection isn't a feeling you wait for. It's a system you build.",
+    eyebrow: "The Platform of Papas approach",
+    title: "Self-leadership is not a personality trait. It is a set of skills.",
     copy:
-      "Most fathers know something is off. Awareness without a system changes nothing. This is the system.",
+      "Those skills can be learned, practised, and made visible in the way you think, decide, communicate, respond, and live.",
   })}
   ${section({
     center: true,
-    title: "Why good fathers still feel disconnected",
+    title: "Responsibility does not automatically create self-leadership.",
     intro:
-      "Modern fathers are caught in an impossible expectation: perform at work, provide for the family, and be emotionally present at home.",
-    content: `<blockquote class="pullquote centered reveal">Fathers do not lack love. They lack a consistent way to express it. They default into disconnection - not because they do not care, but because no one ever taught them how.</blockquote>`,
+      "A man can be capable, dependable, and successful while still feeling mentally overloaded, uncertain about his direction, or disconnected from what he genuinely wants.",
+    content: `<blockquote class="pullquote centered reveal">This is not evidence that something is wrong with him. It means he has never been taught the internal skills required to lead himself.</blockquote>`,
   })}
   ${section({
     cls: "tint",
-    title: "The inside-out method",
+    title: "Change begins within - and becomes visible everywhere.",
     intro:
-      "Every program at Platform of Papas is built on one foundational insight: the outside changes when the inside shifts first.",
+      "Self-leadership changes your relationship with pressure, choice, confidence, time, purpose, and the people who matter.",
     content: `<div class="comparison reveal">
       <div class="comparison-col">
         <h3>Before</h3>
-        <p>Physically present, emotionally distant</p>
-        <p>Inconsistent effort</p>
-        <p>Provider-first identity</p>
-        <p>Reacting to your family</p>
+        <p>Capable but mentally overloaded</p>
+        <p>Waiting for certainty before choosing</p>
+        <p>Performing confidence</p>
+        <p>Living by urgency and external expectations</p>
       </div>
       <div class="comparison-arrow">&rarr;</div>
       <div class="comparison-col">
         <h3>After</h3>
-        <p><strong>Deeply connected father</strong></p>
-        <p><strong>Consistent presence</strong></p>
-        <p><strong>Integrated identity: success + family</strong></p>
-        <p><strong>Intentionally showing up for them</strong></p>
+        <p><strong>Clearer about what matters</strong></p>
+        <p><strong>Choosing with greater self-trust</strong></p>
+        <p><strong>Building authentic confidence</strong></p>
+        <p><strong>Creating life with intention and direction</strong></p>
       </div>
     </div>`,
   })}
   ${section({
-    eyebrow: "The framework",
-    title: "The F.U.T.U.R.E Framework",
+    eyebrow: "The practical foundation",
+    title: "Nine skills of self-leadership",
     intro:
-      "A six-step journey from pattern recognition to lasting change.",
+      "Every promise made by Platform of Papas connects to a practical inner skill that can be used in everyday life.",
     center: true,
-    content: `<div class="framework-list">${framework
+    content: `<div class="framework-list">${skills
       .map(
-        ([letter, title, copy]) => `<article class="framework-step reveal">
-          <div class="step-letter">${letter}</div>
+        ([number, title, copy]) => `<article class="framework-step reveal">
+          <div class="step-letter">${number}</div>
           <div><h3>${title}</h3><p>${copy}</p></div>
         </article>`
       )
@@ -648,59 +675,59 @@ function approachPage() {
   ${section({
     cls: "approach-cta",
     center: true,
-    title: "The work is learnable. The starting point is you.",
+    title: "The work is learnable. The starting point is within.",
     intro:
-      "Connection is a skill. Presence is a practice. And the system is waiting.",
+      "Take charge of your inner world. Step into your power. Create a life that fully reflects the man you were always capable of becoming.",
     content: `<div class="section-actions">${button("Join the Webinar", WEBINAR_URL)} <a class="text-link" href="/about/">Read Vishal's Story &rarr;</a></div>`,
   })}`;
 }
 
 function journeyStrip() {
   return `<section class="journey-strip" aria-label="Three-stage journey">
-    <article class="journey-step reveal"><span class="step-num">STAGE 1</span><h3>Mirror</h3><p>See the pattern before anything can change.</p></article>
-    <article class="journey-step reveal"><span class="step-num">STAGE 2</span><h3>Reframe</h3><p>Break the belief that keeps connection feeling impossible.</p></article>
-    <article class="journey-step reveal"><span class="step-num">STAGE 3</span><h3>System</h3><p>Build the habit in ordinary days, not just big moments.</p></article>
+    <article class="journey-step reveal"><span class="step-num">STAGE 1</span><h3>Notice</h3><p>See the thoughts, emotions, and patterns shaping your response.</p></article>
+    <article class="journey-step reveal"><span class="step-num">STAGE 2</span><h3>Choose</h3><p>Pause, reconnect with what matters, and act from your values.</p></article>
+    <article class="journey-step reveal"><span class="step-num">STAGE 3</span><h3>Create</h3><p>Direct your time, energy, decisions, and life with intention.</p></article>
   </section>`;
 }
 
 function storiesPage() {
   return `${hero({
     center: true,
-    title: "100+ fathers. Real shifts. No performance.",
+    eyebrow: "Reflections and results",
+    title: "Not a new you. The real you, fully expressed.",
     copy:
-      "These are not testimonials polished for a sales page. These are men - working professionals, providers, fathers - who did the work and felt something change.",
+      "Self-leadership becomes visible in clearer decisions, greater emotional steadiness, authentic confidence, stronger presence, and a life lived with intention.",
   })}
   ${section({
     cls: "off",
     eyebrow: "What fathers say",
-    title: "What fathers say after doing the work",
+    title: "What fathers notice as the work becomes real",
     content: testimonialsGrid(),
   })}
   ${section({
-    eyebrow: "From inside out",
-    title: "Real stories that started with a father who cared.",
+    eyebrow: "Everyday transformation",
+    title: "What self-leadership can look like in real life.",
     content: `<div class="case-grid">
-      ${caselet("The father who was always 'somewhere else'", "He was home every evening. But his mind was still in the 11th-floor meeting room. His daughter would call his name twice before he would hear her.", "He built a 4-minute transition ritual between work and home. One habit, consistently held. His daughter stopped calling his name twice.")}
-      ${caselet("The father who thought presence meant slowing down", "He genuinely believed that providing was the highest form of care. The idea that connection needed work felt like a criticism.", "He realised that better presence at home made him sharper at work - not because he found more time, but because the weight of disconnection was no longer draining him.")}
-      ${caselet("The father who thought it was too late", "His children were teenagers. The distance had built up for years. He had convinced himself the window had closed.", "He stopped waiting for a big moment and started showing up in small ones. The turning point was consistency - sustained, unhurried, real.")}
+      ${caselet("The father caught in mental noise", "His mind keeps replaying conversations, scanning possible outcomes, and carrying unfinished pressure into the next part of his day.", "He notices the pattern before it takes over, regulates the pressure, and becomes capable of giving the present moment his full attention.")}
+      ${caselet("The father waiting for certainty", "He can make decisions, but meaningful personal choices become exhausting because he wants to eliminate every risk before moving.", "He becomes clearer about his values, accepts that meaningful choices contain uncertainty, and acts with greater self-trust.")}
+      ${caselet("The father living by expectations", "He knows what others consider responsible, impressive, or acceptable, but has become less certain about what he genuinely wants.", "He reconnects with his own voice, sets respectful boundaries, and begins creating a future that reflects who he truly is.")}
     </div>`,
   })}
   ${section({
     cls: "dark",
-    title: "Self-reported outcomes from previous cohorts",
-    content: `<div class="stat-grid">
-      <div class="stat-item reveal"><strong data-count-to="95" data-count-suffix="%">95%</strong><span>reported increased self-awareness</span></div>
-      <div class="stat-item reveal"><strong data-count-to="88" data-count-suffix="%">88%</strong><span>reported greater clarity in attention</span></div>
-      <div class="stat-item reveal"><strong data-count-to="82" data-count-suffix="%">82%</strong><span>reported stronger connection with family</span></div>
-      <div class="stat-item reveal"><strong data-count-to="79" data-count-suffix="%">79%</strong><span>reported feeling more present at home</span></div>
-    </div>
-    <p class="footnote reveal">Based on self-reported outcomes. Platform of Papas cohorts 1-3.</p>`,
+    title: "The outcomes we build toward",
+    content: `<div class="outcome-grid">
+      <article class="outcome-item reveal"><span>01</span><h3>Clearer decisions</h3><p>Less internal back-and-forth. Greater trust in your own judgement.</p></article>
+      <article class="outcome-item reveal"><span>02</span><h3>Emotional strength</h3><p>Experience pressure without allowing the moment to control your response.</p></article>
+      <article class="outcome-item reveal"><span>03</span><h3>Authentic confidence</h3><p>Stop performing strength and build confidence through alignment and action.</p></article>
+      <article class="outcome-item reveal"><span>04</span><h3>Meaningful direction</h3><p>Become clearer about what you want to create, experience, and contribute.</p></article>
+    </div>`,
   })}
   ${section({
     cls: "gold-tint center",
-    title: "Your story starts here.",
+    title: "Your next level begins within.",
     intro:
-      "Every father above was once where you are - unsure if it is possible, unsure if it is worth it. The only difference is they started.",
+      "You do not need to manufacture a different personality. You can learn the skills that bring your real strength more fully into your life.",
     content: `<div class="section-actions">${button("Join the Webinar", WEBINAR_URL)} ${button("Get the Free eBook First", "/ebook/", "secondary dark")}</div>`,
   })}`;
 }
@@ -717,17 +744,18 @@ function caselet(title, challenge, after) {
 function newsletterPage() {
   return `${hero({
     center: true,
-    title: "One letter. Every week. For the father who still wants to be more.",
+    eyebrow: "The Papas Letter",
+    title: "One letter a week for the father ready to lead himself.",
     copy:
-      "No tips. No hacks. No productivity content dressed up as fatherhood advice. Just one honest, thought-provoking insight every week.",
+      "No performance. No inflated promises. Just one grounded idea on clarity, confidence, emotional strength, presence, or intentional living every Sunday.",
     actions: `<button class="btn-primary newsletter-modal-cta" type="button" data-modal-open aria-haspopup="dialog" aria-controls="ghlModal">Join The Papas Letter</button>`,
   })}
   ${section({
     title: "What's inside each letter",
     content: `<div class="feature-grid">
-      ${feature("&#9993;", "One insight. Never more.", "Each letter is built around a single idea - delivered with depth and honesty.")}
-      ${feature("&nearr;", "The kind of thing you'll share", "Written to be forwarded to a colleague, brother, or friend going through the same thing.")}
-      ${feature("&#9825;", "Free. Always.", "No upsell in every email. No pressure. The letter exists because this conversation matters.")}
+      ${feature("&#9993;", "One idea to practise", "Each letter explores one useful self-leadership idea with enough depth to apply it in everyday life.")}
+      ${feature("&nearr;", "Grounded ascension", "A larger life is possible - without theatrical promises, diagnosis, or pretending to be someone else.")}
+      ${feature("&#9825;", "Free. Always.", "No constant pressure. The letter exists to help fathers think more clearly and live more intentionally.")}
     </div>`,
   })}
   ${section({
@@ -735,14 +763,14 @@ function newsletterPage() {
     title: "A taste of what's inside",
     content: `<article class="letter-card reveal">
       <span class="eyebrow">From a recent issue</span>
-      <p class="testimonial-quote">"Your child does not need you to be perfect. They need you to be present. There is a difference - and it is bigger than most fathers realise. Perfection is a performance. Presence is a practice. One exhausts you. The other builds you."</p>
+      <p class="testimonial-quote">"You do not become confident by repeating that you are confident. You become confident by learning that you can trust yourself."</p>
       <cite class="testimonial-name">Vishal Kumar Singh, Platform of Papas</cite>
     </article>`,
   })}
   <section class="newsletter-strip">
     <div class="container">
       <h2 class="reveal">Join the fathers already reading.</h2>
-      <p class="reveal">Every week, one insight lands in your inbox. Nothing else.</p>
+      <p class="reveal">One grounded self-leadership insight lands in your inbox every Sunday.</p>
       <button class="btn-primary newsletter-modal-cta reveal" type="button" data-modal-open aria-haspopup="dialog" aria-controls="ghlModal">Join The Papas Letter</button>
       <p class="newsletter-privacy reveal">No spam. No sales. Unsubscribe anytime.</p>
     </div>
@@ -763,7 +791,7 @@ function newsletterModal() {
       <button class="ghl-modal-close" id="ghlModalClose" type="button" aria-label="Close newsletter signup">&times;</button>
       <div class="ghl-modal-header">
         <h2 id="ghlModalTitle">Join The Papas Letter</h2>
-        <p>One honest insight for ambitious fathers, delivered every Sunday.</p>
+        <p>One grounded self-leadership insight for fathers, delivered every Sunday.</p>
       </div>
       <div class="ghl-modal-form-scroll">
         <div id="ghlIframeLoading" class="ghl-loading" role="status">Loading form...</div>
@@ -779,9 +807,10 @@ function feature(icon, title, copy) {
 
 function contactPage() {
   return `${hero({
-    title: "Let's talk.",
+    eyebrow: "Contact Platform of Papas",
+    title: "Begin a conversation.",
     copy:
-      "Whether you have a question about the programs, want to enquire about the 1-1 consultation, or just want to reach out - we are here.",
+      "Ask about the live webinar, recorded course, free eBook, a private consultation, or a potential collaboration.",
   })}
   ${section({
     title: "Send us a message",
@@ -810,7 +839,7 @@ function contactPage() {
         <h3>Prefer to reach out directly?</h3>
         <p>Email: <a class="text-link" href="mailto:hello@platformofpapas.com">hello@platformofpapas.com</a></p>
         <p>Instagram: <a class="text-link" href="https://www.instagram.com/platformofpapas">@platformofpapas</a></p>
-        <p>Community access opens through the 21 Day Connected Father Challenge or Fatherhood Transformation Program enrollment.</p>
+        <p>For programme guidance, tell us what you want to develop - clearer decisions, emotional strength, confidence, presence, or meaningful direction.</p>
         <h3>For collaborations & partnerships</h3>
         <p>If you are a brand, organisation, or media outlet interested in working with Vishal or Platform of Papas, choose "Partnership" in the form.</p>
       </aside>
@@ -818,11 +847,12 @@ function contactPage() {
   })}
   ${section({
     cls: "tint",
-    title: "Not sure what you're looking for?",
+    title: "Choose your starting point.",
     content: `<ul class="link-list">
-      <li>New to Platform of Papas? <a class="text-link" href="/ebook/">Download the free eBook</a></li>
-      <li>Ready to do the work? <a class="text-link" href="${CHALLENGE_URL}">Join the 21 Day Connected Father Challenge</a></li>
-      <li>Want to understand the method first? <a class="text-link" href="/approach/">Read The Approach</a></li>
+      <li>New to self-leadership? <a class="text-link" href="/ebook/">Begin with the free eBook</a></li>
+      <li>Want to experience the approach live? <a class="text-link" href="${WEBINAR_URL}">Join the webinar</a></li>
+      <li>Ready for deeper, self-paced work? <a class="text-link" href="${TRANSFORMATION_URL}">Explore the recorded course</a></li>
+      <li>Want to understand the method first? <a class="text-link" href="/approach/">Read the approach</a></li>
     </ul>`,
   })}`;
 }
@@ -1172,17 +1202,19 @@ function refundPage() {
   });
 }
 
-function offerShell(title) {
+function offerShell({ eyebrow = "", title, copy, cta = "", href = "" }) {
   return `${hero({
     center: true,
+    eyebrow,
     title,
-    copy: "",
+    copy,
+    actions: cta && href ? button(cta, href) : "",
   })}
-  <section class="section shell-empty">
-    <div class="container">
-      <!-- Content supplied by client - paste here -->
-    </div>
-  </section>`;
+  ${section({
+    cls: "tint center",
+    title: "Awaken the leader in you.",
+    intro: "Better within yourself. More present with others. More intentional with your life.",
+  })}`;
 }
 
 function escapeHtml(value) {
