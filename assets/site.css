@@ -571,6 +571,67 @@ main {
   justify-content: center;
 }
 
+.forbes-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.forbes-feature-label {
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.forbes-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 13px;
+  border: 1px solid rgba(47, 79, 92, 0.12);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+}
+
+.forbes-logo-wrap img {
+  display: block;
+  width: 132px;
+  height: auto;
+}
+
+.forbes-recognition {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
+  max-width: 760px;
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid rgba(47, 79, 92, 0.14);
+  border-bottom: 1px solid rgba(47, 79, 92, 0.14);
+}
+
+.forbes-recognition .forbes-feature-label {
+  color: var(--color-slate);
+}
+
+.forbes-recognition p {
+  margin: 0;
+}
+
+.section.dark .forbes-recognition {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.section.dark .forbes-recognition .forbes-feature-label {
+  color: var(--color-gold);
+}
+
 .newsletter-modal-cta {
   min-width: 220px;
 }
@@ -1817,6 +1878,11 @@ main {
   .section-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .forbes-recognition {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .btn-primary,

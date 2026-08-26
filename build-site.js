@@ -189,7 +189,7 @@ function renderPage(page) {
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="${depth}assets/site.css?v=20260826a">
+  <link rel="stylesheet" href="${depth}assets/site.css?v=20260826c">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -372,6 +372,13 @@ function footer() {
 </footer>`;
 }
 
+function forbesFeature(className = "") {
+  return `<div class="forbes-feature ${className}" aria-label="Featured in Forbes India">
+    <span class="forbes-feature-label">Featured in</span>
+    <span class="forbes-logo-wrap"><img src="/Images/forbes-india-logo.png" alt="Forbes India"></span>
+  </div>`;
+}
+
 function hero({ eyebrow, title, copy, image, imageAlt = "", center = false, wide = false, actions = "" }) {
   const hasImage = Boolean(image);
   return `<section class="hero ${center ? "center" : ""} ${hasImage ? "with-image" : ""}">
@@ -549,6 +556,10 @@ function homePage() {
         <p class="lead">Founder &middot; Platform of Papas</p>
         <p>Vishal built Platform of Papas from lived experience. When the external structures he had relied on disappeared, he was forced to ask who he was without the titles, targets, and approval that had shaped his identity.</p>
         <p>His work now helps responsible fathers notice what is within their leadership, move beyond inherited patterns, and intentionally create a life that works for their family and themselves.</p>
+        <div class="forbes-recognition">
+          ${forbesFeature()}
+          <p>Vishal has been featured in Forbes India as part of <strong>Influential Leaders Creating Global Impact</strong>.</p>
+        </div>
         <a class="text-link" href="/about/">Read Vishal's Story &rarr;</a>
       </div>
     </div>`,
@@ -580,6 +591,10 @@ function aboutPage() {
     content: `<div class="prose reveal">
       <p>Vishal grew up with a familiar map: study hard, build a career, fulfil your responsibilities, and keep performing. He followed it completely. Work became more than something he did. It became the structure around his identity and the clearest proof that he was doing life correctly.</p>
       <p>He was capable, committed, and moving forward. From the outside, the path made sense. But external success did not automatically teach him how to understand himself or lead himself through the life he was creating.</p>
+      <div class="forbes-recognition">
+        ${forbesFeature()}
+        <p>Forbes India featured Vishal as part of <strong>Influential Leaders Creating Global Impact</strong>.</p>
+      </div>
     </div>`,
   })}
   ${section({
