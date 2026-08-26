@@ -820,7 +820,7 @@ main {
 
 .program-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   margin-top: 36px;
 }
@@ -1481,6 +1481,10 @@ main {
   min-width: 0;
 }
 
+#programs {
+  scroll-margin-top: 120px;
+}
+
 .legal-section {
   padding: 0 0 42px;
   margin-bottom: 42px;
@@ -1592,7 +1596,7 @@ main {
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
   gap: 30px;
   margin-top: 48px;
 }
@@ -1704,7 +1708,10 @@ main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .program-grid,
+  .program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .testimonial-grid,
   .testimonial-grid.two,
   .case-grid,
@@ -1752,6 +1759,10 @@ main {
 @media (max-width: 640px) {
   .container {
     padding: 0 16px;
+  }
+
+  .program-grid {
+    grid-template-columns: 1fr;
   }
 
   .brand-tagline {
